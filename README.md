@@ -188,3 +188,6 @@ MIT License - see LICENSE file for details
 - Built with [Ollama](https://ollama.ai/) and [Ollama-js](https://github.com/ollama/ollama-js)
 - UI built with React and Tailwind CSS
 - Icons from various emoji sets
+
+## Git Tuto 
+ - Commit
