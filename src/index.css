@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,62 +7,170 @@
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
   }
   
   body {
-    @apply bg-gray-900 text-white;
+    @apply bg-ollama-dark text-white antialiased;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    min-height: 100vh;
+  }
+  
+  * {
+    @apply border-gray-700;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-ollama-blue hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-gradient-to-r from-ollama-blue to-ollama-blue-dark hover:from-ollama-blue-dark hover:to-ollama-blue 
+           text-white font-medium py-2.5 px-6 rounded-xl transition-all duration-300 
+           shadow-lg hover:shadow-glow transform hover:scale-105 active:scale-95
+           focus:outline-none focus:ring-2 focus:ring-ollama-blue focus:ring-opacity-50;
   }
   
   .btn-secondary {
-    @apply bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-ollama-gray hover:bg-ollama-gray-light text-white font-medium py-2.5 px-6 rounded-xl 
+           transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95
+           border border-ollama-gray-light hover:border-ollama-gray-lighter
+           focus:outline-none focus:ring-2 focus:ring-ollama-gray-light focus:ring-opacity-50;
   }
   
   .btn-danger {
-    @apply bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-gradient-to-r from-ollama-error to-red-600 hover:from-red-600 hover:to-ollama-error 
+           text-white font-medium py-2.5 px-6 rounded-xl transition-all duration-300 
+           shadow-lg hover:shadow-red-500/25 transform hover:scale-105 active:scale-95
+           focus:outline-none focus:ring-2 focus:ring-ollama-error focus:ring-opacity-50;
+  }
+  
+  .btn-success {
+    @apply bg-gradient-to-r from-ollama-success to-green-600 hover:from-green-600 hover:to-ollama-success 
+           text-white font-medium py-2.5 px-6 rounded-xl transition-all duration-300 
+           shadow-lg hover:shadow-green-500/25 transform hover:scale-105 active:scale-95
+           focus:outline-none focus:ring-2 focus:ring-ollama-success focus:ring-opacity-50;
+  }
+  
+  .btn-accent {
+    @apply bg-gradient-to-r from-ollama-accent to-ollama-accent-dark hover:from-ollama-accent-dark hover:to-ollama-accent 
+           text-white font-medium py-2.5 px-6 rounded-xl transition-all duration-300 
+           shadow-lg hover:shadow-cyan-500/25 transform hover:scale-105 active:scale-95
+           focus:outline-none focus:ring-2 focus:ring-ollama-accent focus:ring-opacity-50;
   }
   
   .input-field {
-    @apply bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-ollama-blue focus:border-transparent;
+    @apply bg-ollama-gray/50 backdrop-blur-sm border border-ollama-gray-light rounded-xl px-4 py-3 
+           text-white placeholder-gray-400 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-ollama-blue focus:border-ollama-blue
+           hover:border-ollama-gray-lighter focus:bg-ollama-gray/70;
+  }
+  
+  .textarea-field {
+    @apply bg-ollama-gray/50 backdrop-blur-sm border border-ollama-gray-light rounded-xl px-4 py-3 
+           text-white placeholder-gray-400 transition-all duration-300 resize-none
+           focus:outline-none focus:ring-2 focus:ring-ollama-blue focus:border-ollama-blue
+           hover:border-ollama-gray-lighter focus:bg-ollama-gray/70;
   }
   
   .card {
-    @apply bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-700;
+    @apply bg-ollama-gray/30 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-ollama-gray-light/50
+           hover:shadow-2xl hover:border-ollama-gray-lighter/50 transition-all duration-300;
+  }
+  
+  .card-interactive {
+    @apply card hover:bg-ollama-gray/40 cursor-pointer transform hover:scale-[1.02] active:scale-[0.98];
   }
   
   .nav-item {
-    @apply px-4 py-2 rounded-lg transition-colors duration-200 cursor-pointer;
+    @apply px-4 py-3 rounded-xl transition-all duration-300 cursor-pointer relative overflow-hidden
+           group hover:shadow-lg;
   }
   
   .nav-item-active {
-    @apply bg-ollama-blue text-white;
+    @apply bg-gradient-to-r from-ollama-blue to-ollama-blue-dark text-white shadow-glow;
   }
   
   .nav-item-inactive {
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white;
+    @apply text-gray-300 hover:bg-ollama-gray-light hover:text-white
+           before:absolute before:inset-0 before:bg-gradient-to-r before:from-ollama-blue/10 before:to-ollama-accent/10
+           before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300;
+  }
+  
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-ollama-blue via-ollama-accent to-ollama-purple bg-clip-text text-transparent;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full border-2 border-gray-600 border-t-ollama-blue;
+  }
+  
+  .message-bubble-user {
+    @apply bg-gradient-to-r from-ollama-blue to-ollama-blue-dark text-white rounded-2xl rounded-br-md 
+           px-4 py-3 shadow-lg max-w-[80%] ml-auto;
+  }
+  
+  .message-bubble-assistant {
+    @apply bg-ollama-gray/50 backdrop-blur-sm text-white rounded-2xl rounded-bl-md 
+           px-4 py-3 shadow-lg max-w-[80%] border border-ollama-gray-light/30;
+  }
+  
+  .status-indicator {
+    @apply w-2 h-2 rounded-full animate-pulse;
+  }
+  
+  .status-online {
+    @apply bg-ollama-success;
+  }
+  
+  .status-offline {
+    @apply bg-ollama-error;
+  }
+  
+  .status-loading {
+    @apply bg-ollama-warning;
   }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-800;
+  background: rgba(30, 41, 59, 0.3);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-600 rounded;
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 4px;
+  transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+  background: rgba(59, 130, 246, 0.7);
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(30, 41, 59, 0.3);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.5) rgba(30, 41, 59, 0.3);
+}
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Loading animation */

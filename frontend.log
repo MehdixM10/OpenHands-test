@@ -2,9 +2,13 @@
 > ollama-full-app@1.0.0 dev
 > vite
 
+Port 12000 is in use, trying another one...
+Port 12001 is in use, trying another one...
+Port 12002 is in use, trying another one...
+Port 12003 is in use, trying another one...
 
-  VITE v5.4.19  ready in 171 ms
+  VITE v5.4.21  ready in 148 ms
 
-  ➜  Local:   http://localhost:12000/
-  ➜  Network: http://10.2.111.139:12000/
+  ➜  Local:   http://localhost:12004/
+  ➜  Network: http://10.2.35.140:12004/
   ➜  press h + enter to show help
